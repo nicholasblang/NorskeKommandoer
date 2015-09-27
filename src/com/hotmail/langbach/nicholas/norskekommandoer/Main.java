@@ -72,8 +72,8 @@ public class Main extends JavaPlugin {
 
 				return true;
 			} else {
-				if (!(Bukkit.getServer().getPlayer(args[0]) == null)) {
-					p.sendMessage(ChatColor.RED + "Kunne ikke finne spilleren " + ChatColor.GOLD + args[0]);
+				if (Bukkit.getServer().getPlayer(args[0]) == null) {
+					p.sendMessage(ChatColor.RED + "Kunne ikke finne spilleren " + ChatColor.BLUE + args[0]);
 					return true;
 				}
 
