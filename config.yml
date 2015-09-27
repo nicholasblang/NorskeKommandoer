@@ -1,0 +1,16 @@
+#Du lurer sikkert på hva de nede gjør? Med de kan du deaktivere og aktivere kommandoer.
+# true = betyr at kommandoen er aktivert.
+# false = betyr at kommandoen er deaktivert. 
+#OBS! Hvis du deaktiverer en kommando vil det bare komme opp en melding om at den er deaktivert.
+ping: true
+fly: true
+stuck: true
+location: true
+openinv: true
+settspawn: true
+spawn: true
+spillerinfo: true
+#Hvis du deaktiverer tpa så vil den automatisk deaktivere /godta og /avvis i tilegg
+tpa: true
+#Det her er sekunder til tpa forespørselen utløper automatisk
+Sekunder: 120

@@ -1,0 +1,82 @@
+name: NorskeKommandoer
+version: 1.1.1
+description: Mange norske kommandoer.
+author: nicholasblang
+main: com.hotmail.langbach.nicholas.norskekommandoer.Main
+
+commands:
+  settspawn:
+    description: Setter spawn punktet.
+    usage: /<command>
+  spawn:
+    description: Teleporterer deg til spawn punktet.
+    usage: /<command>
+  fly:
+    description: Setter deg i fly modus.
+    usage: /<command>
+  stuck:
+    description: Teleporterer deg til den høyeste blokken.
+    usage: /<command>
+    aliases: [s]
+  location:
+    description: Sender en melding om hva kordinatene dine er.
+    usage: /<command> <spiller>
+    aliases: [loc, kordinater, kor]
+  openinv:
+    description: Åpner spilleren som er angitt sitt invetory.
+    usage: /<command> <spiller>
+    aliases: [invsee, åpneinv]
+  ping:
+    description: Hviser pingen din eller pingen til spilleren du skrev.
+    usage: /<command> <spiller>
+  norskekommandoer:
+    description: Noen sub-kommandoer.
+    usage: /<command>
+  spillerinfo:
+    description: Gir informasjon om spilleren.
+    usage: /<command> <spiller>
+  tpa:
+    description: Sender en TPA forespørsel til en spiller.
+    usage: /<command> <spiller>
+  godta:
+    description: Godtar en TPA forespørsel.
+    usage: <command> <spiller>
+  avvis:
+    description: Avviser en TPA forespørsel.
+    usage: <command> <spiller>
+permissions:
+  norskekommandoer.settspawn:
+    description: Gir deg permission til å bruke kommandoen /settspawn.
+    default: op
+  norskekommandoer.stuck:
+    description: Gir deg permission til å bruke kommandoen /stuck
+    usage: /<command>
+  norskekommandoer.fly:
+    description: Gir deg permission til å bruke kommandoen /fly.
+    default: op
+  norskekommandoer.location:
+    description: Gir deg permission til å bruke kommandoen /location.
+    default: op
+  norskekommandoer.openinv:
+    description: Gir deg permission til å bruke kommandoen /openinv.
+    default: op
+  norskekommandoer.reload:
+    description: Gir deg permission til å bruke kommandoen /norskekommandoer reload
+    default: op
+  norskekommandoer.spillerinfo:
+    description: Gir deg permission til å bruke kommandoen /spillerinfo
+    default: op
+  norskekommandoer.tpa:
+    description: Gir deg permission til å bruke /tpa, /avvis og /godta.
+    default: op
+  norskekommandoer.*:
+    description: Gir deg alle permissionsene til pluginen NorskeKommandoer.
+    children:
+      norskekommandoer.settspawn: true
+      norskekommandoer.fly: true
+      norskekommandoer.stuck: true
+      norskekommandoer.location: true
+      norskekommandoer.openinv: true
+      norskekommandoer.reload: true
+      norskekommandoer.spillerinfo: true
+      norskekommandoer.tpa: true
