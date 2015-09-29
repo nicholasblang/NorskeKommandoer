@@ -36,11 +36,7 @@ public class SettingsManager {
 		cfile = new File(p.getDataFolder(), "config.yml");
 
 		if (!(p.getDataFolder().exists())) {
-			try {
-				p.getDataFolder().createNewFile();
-			} catch (IOException e) {
-				Bukkit.getLogger().severe(ChatColor.RED + "Kunne ikke lage fil mappen!");
-			}
+			p.getDataFolder().mkdir();
 		}
 		dfile = new File(p.getDataFolder(), "data.yml");
 
