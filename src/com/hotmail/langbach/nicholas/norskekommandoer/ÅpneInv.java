@@ -1,4 +1,4 @@
-package com.hotmail.langbach.nicholas.norskekommandoer.Kommandoer;
+package com.hotmail.langbach.nicholas.norskekommandoer;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -7,16 +7,14 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import com.hotmail.langbach.nicholas.norskekommandoer.Main;
-
 public class ÅpneInv implements CommandExecutor {
 
-	private static Main plugin = (Main) Bukkit.getPluginManager().getPlugin("NorskeKommandoer");
+	SettingsManager settings = SettingsManager.getInstance();
 
 	@SuppressWarnings("deprecation")
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		if (plugin.getConfig().getBoolean("openinv") == false) {
+		if (settings.config.getBoolean("openinv") == false) {
 			sender.sendMessage(ChatColor.RED
 					+ "Error: Kommandoen /openinv er deaktivert. Hvis du tror dette er en feil, kontakt en server administrator.");
 			return true;

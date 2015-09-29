@@ -1,28 +1,22 @@
-package com.hotmail.langbach.nicholas.norskekommandoer.Kommandoer;
+package com.hotmail.langbach.nicholas.norskekommandoer;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.plugin.PluginDescriptionFile;
-
-import com.hotmail.langbach.nicholas.norskekommandoer.Main;
 
 public class NorskeKommandoer implements CommandExecutor {
 
-	private static Main plugin = (Main) Bukkit.getPluginManager().getPlugin("NorskeKommandoer");
+	SettingsManager settings = SettingsManager.getInstance();
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		PluginDescriptionFile pdf = plugin.getDescription();
 		if (args.length == 0) {
 
 			sender.sendMessage(ChatColor.GREEN + "Tilgjenglige sub-kommandoer:");
-			sender.sendMessage(ChatColor.GREEN + "/norskekommandoer reload" + ChatColor.RED + " | " + ChatColor.GREEN
+			sender.sendMessage(ChatColor.GREEN + "/nk reload" + ChatColor.RED + " | " + ChatColor.GREEN
 					+ "reloader config.yml filen.");
-			sender.sendMessage(ChatColor.GREEN + "/norskekommandoer info" + ChatColor.RED + " | " + ChatColor.GREEN
-					+ "gir deg info om pluginen.");
+			
 		} else
 			switch (args[0].toLowerCase()) {
 
@@ -33,14 +27,10 @@ public class NorskeKommandoer implements CommandExecutor {
 					return true;
 				} else
 
-					plugin.reloadConfig();
+					settings.reloadConfig();
 				sender.sendMessage(ChatColor.GREEN + "Config.yml ble velykket reloaded!");
 				break;
-			case "info":
-				sender.sendMessage(ChatColor.GREEN + "---==[ NorskeKommandoer ]==---");
-				sender.sendMessage(ChatColor.GREEN + "Versjon: " + ChatColor.BLUE + pdf.getVersion());
-				sender.sendMessage(ChatColor.GREEN + "Utvikler: " + ChatColor.BLUE + pdf.getAuthors());
-				break;
+			
 			default:
 				sender.sendMessage(ChatColor.RED + "Kunne ikke finne en sub-kommando som het " + args[0] + "!");
 				break;

@@ -1,23 +1,22 @@
-package com.hotmail.langbach.nicholas.norskekommandoer.Kommandoer;
+package com.hotmail.langbach.nicholas.norskekommandoer;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
-import com.hotmail.langbach.nicholas.norskekommandoer.Main;
-
 public class SpillerInfo implements CommandExecutor {
 
-	private static Main plugin = (Main) Bukkit.getPluginManager().getPlugin("NorskeKommandoer");
+	SettingsManager settings = SettingsManager.getInstance();
 
 	@SuppressWarnings("deprecation")
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		if (plugin.getConfig().getBoolean("spillerinfo") == false) {
+		if (settings.config.getBoolean("spillerinfo") == false) {
 			sender.sendMessage(ChatColor.RED
 					+ "Error: Kommandoen /spillerinfo er deaktivert. Hvis du tror dette er en feil, kontakt en server administrator.");
 			return true;
@@ -28,10 +27,19 @@ public class SpillerInfo implements CommandExecutor {
 		} else
 
 		if (args.length != 0) {
-			if (Bukkit.getPlayer(args[0]) == null) {
-				sender.sendMessage(ChatColor.RED + "Error: Spilleren " + args[0] + " er ikke pålogget!");
+			if (Bukkit.getPlayer(args[0]) == null && Bukkit.getOfflinePlayer(args[0]).hasPlayedBefore()) {
+				OfflinePlayer t = Bukkit.getOfflinePlayer(args[0]);
+				sender.sendMessage(
+						ChatColor.GREEN + "---==[ " + ChatColor.BLUE + t.getName() + ChatColor.GREEN + " ]==---");
+				sender.sendMessage(ChatColor.GREEN + "Bannet: " + ChatColor.BLUE + t.isBanned());
+				sender.sendMessage(ChatColor.GREEN + "Op: " + ChatColor.BLUE + t.isOp());
+				sender.sendMessage(ChatColor.GREEN + "Whitelisted: " + ChatColor.BLUE + t.isWhitelisted());
 				return true;
-			} else {
+				
+			} else if (Bukkit.getPlayer(args[0]) == null) {
+				sender.sendMessage(ChatColor.RED + "Error: Spilleren " + args[0] + " har ikke spilt på serveren før!");
+				return true;
+			} else  {
 				Player t = Bukkit.getPlayer(args[0]);
 				sender.sendMessage(
 						ChatColor.GREEN + "---==[ " + ChatColor.BLUE + t.getName() + ChatColor.GREEN + " ]==---");
@@ -41,10 +49,12 @@ public class SpillerInfo implements CommandExecutor {
 				sender.sendMessage(ChatColor.GREEN + "UUID: " + ChatColor.BLUE + t.getUniqueId().toString());
 				sender.sendMessage(ChatColor.GREEN + "Ping: " + ChatColor.BLUE + ((CraftPlayer) t).getHandle().ping
 						+ ChatColor.GREEN + "ms");
+				sender.sendMessage(
+						ChatColor.GREEN + "IP: " + ChatColor.BLUE + t.getAddress().getAddress().getHostAddress());
 				return true;
 			}
 		}
-		sender.sendMessage(ChatColor.RED + "Error: For lite argumenter.");
+		sender.sendMessage(ChatColor.RED + "Error: Husk å skriv navn! /spillerinfo <spiller>");
 		return true;
 	}
 

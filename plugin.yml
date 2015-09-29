@@ -1,5 +1,5 @@
 name: NorskeKommandoer
-version: 1.1.1
+version: 1.1.2
 description: Mange norske kommandoer.
 author: nicholasblang
 main: com.hotmail.langbach.nicholas.norskekommandoer.Main
@@ -14,10 +14,11 @@ commands:
   fly:
     description: Setter deg i fly modus.
     usage: /<command>
+    aliases: [svev]
   stuck:
     description: Teleporterer deg til den høyeste blokken.
     usage: /<command>
-    aliases: [s]
+    aliases: [s, sitterfast, fast]
   location:
     description: Sender en melding om hva kordinatene dine er.
     usage: /<command> <spiller>
@@ -29,21 +30,42 @@ commands:
   ping:
     description: Hviser pingen din eller pingen til spilleren du skrev.
     usage: /<command> <spiller>
-  norskekommandoer:
+  nk:
     description: Noen sub-kommandoer.
     usage: /<command>
+    aliases: [norskekommandoer]
   spillerinfo:
     description: Gir informasjon om spilleren.
     usage: /<command> <spiller>
   tpa:
     description: Sender en TPA forespørsel til en spiller.
     usage: /<command> <spiller>
+    aliases: [tpforespørsel, tpf]
   godta:
     description: Godtar en TPA forespørsel.
     usage: <command> <spiller>
   avvis:
     description: Avviser en TPA forespørsel.
     usage: <command> <spiller>
+  stabsamtale:
+    description: En privat samtale for alle stab medlemmer.
+    usage: <command>
+    aliases: [ss, stabs, ssamtale]
+  kick:
+    description: Kicker en spiller.
+    aliases: [spark, sparkut]
+    usage: <command> <spiller>
+  pvp:
+    description: Setter av eller på pvp.
+    usage: <command>
+  stabhjelp:
+    description: Sender en melding til stab medlemmene.
+    usage: <command> <melding>
+    aliases: [shjelp, helpop, stabh, sh]
+  rens:
+    description: Renser ditt inventar.
+    usage: <command> [spiller]
+    aliases: [ci, cleari, cinventory]
 permissions:
   norskekommandoer.settspawn:
     description: Gir deg permission til å bruke kommandoen /settspawn.
@@ -69,6 +91,18 @@ permissions:
   norskekommandoer.tpa:
     description: Gir deg permission til å bruke /tpa, /avvis og /godta.
     default: op
+  norskekommandoer.stab:
+    description: Gir deg permission til stab kommandoer
+    default: op
+  norskekommandoer.kick:
+    description: Gir deg permission til å bruke /kick
+    default: op
+  norskekommandoer.pvp:
+    description: Gir deg permission til å bruke /pvp
+    default: op
+  norskekommandoer.rens:
+    description: Gir deg permission til å bruke /rens
+    default: op
   norskekommandoer.*:
     description: Gir deg alle permissionsene til pluginen NorskeKommandoer.
     children:
@@ -80,3 +114,7 @@ permissions:
       norskekommandoer.reload: true
       norskekommandoer.spillerinfo: true
       norskekommandoer.tpa: true
+      norskekommandoer.stab: true
+      norskekommandoer.kick: true
+      norskekommandoer.pvp: true
+      norskekommandoer.rens: true

@@ -10,7 +10,14 @@ openinv: true
 settspawn: true
 spawn: true
 spillerinfo: true
+stabsamtale: true
+kick: true
+pvp: true
+stabhjelp: true
+rens: true
 #Hvis du deaktiverer tpa så vil den automatisk deaktivere /godta og /avvis i tilegg
 tpa: true
 #Det her er sekunder til tpa forespørselen utløper automatisk
 Sekunder: 120
+#Her kan du bestemme om det skal broadcastes når du kicker folk.
+KickBroadcast: true
