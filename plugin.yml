@@ -43,28 +43,28 @@ commands:
     aliases: [tpforespørsel, tpf]
   godta:
     description: Godtar en TPA forespørsel.
-    usage: <command> <spiller>
+    usage: /<command> <spiller>
   avvis:
     description: Avviser en TPA forespørsel.
-    usage: <command> <spiller>
+    usage: /<command> <spiller>
   stabsamtale:
     description: En privat samtale for alle stab medlemmer.
-    usage: <command>
+    usage: /<command>
     aliases: [ss, stabs, ssamtale]
   kick:
     description: Kicker en spiller.
     aliases: [spark, sparkut]
-    usage: <command> <spiller>
+    usage: /<command> <spiller>
   pvp:
     description: Setter av eller på pvp.
-    usage: <command>
+    usage: /<command>
   stabhjelp:
     description: Sender en melding til stab medlemmene.
-    usage: <command> <melding>
+    usage: /<command> <melding>
     aliases: [shjelp, helpop, stabh, sh]
   rens:
     description: Renser ditt inventar.
-    usage: <command> [spiller]
+    usage: /<command> [spiller]
     aliases: [ci, cleari, cinventory]
 permissions:
   norskekommandoer.settspawn:
